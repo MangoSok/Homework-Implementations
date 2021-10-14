@@ -1,0 +1,65 @@
+\documentclass[10pt]{article}
+\usepackage[usenames]{color} %used for font color
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
+\begin{document}
+Veronika Nechaeva
+
+CSE-015 | Discrete Mathematics
+
+Final Homework $\newline$
+1 Logic and Proofs $\newline$
+1.1 Propositional Logic 
+
+a. $\neg$ $p\land (p\lor\neg q)$ Translation: When freeway is closed, no accidents can happen.
+
+b. $\neg$ $p\rightarrow\neg q$ Translation: Closed freeway prevents accidents from happening on it.
+
+1.2 Logical equivalences
+
+Event A = $p\rightarrow q$
+
+Event B = $\neg r \rightarrow \neg q$
+
+\begin{displaymath}
+\begin{array}{|c c|c c|c c|c c|c c|c|c|c|c|}
+p & q & r & q & r & p & \neg r & \neg q & \neg r & \neg p & A & B & A \lor B & \neg r \rightarrow \neg q\\
+\hline
+T & T & T & T & T & T & F & F & F & F & T & T & T & T\\
+T & F & T & F & T & F & F & T & F & T & F & T & T & T\\
+F & T & F & T & F & T & T & F & T & F & T & F & T & F\\
+F & F & F & F & F & F & T & T & T & T & T & T & T & T\\
+\end{array}
+\end{displaymath}
+As you can see, $A\rightarrow B$ and $\neg r \rightarrow \neg q$ are NOT equivalent. 
+
+1.3 System Specifications 
+
+A = system is active
+
+B = system is operating normally
+
+C = user action is legal 
+
+D = system is in interrupt mode
+
+1.4 Quantifiers 
+
+a) $\forall x(x^2-1>0)$ This statement is false because 0 is a real number, and $0^2-1=-1$, which is less than 0. Also, when x is 1, the result will equal to 0. Therefore, it is a false statement.
+
+b) $\exists x \exists y(x^4+y^4=0)$ This statement is true since there exists at least one x and y value which satisfies this expression. That is x = 0 and y = 0 (because 0 is a real number). 
+
+5 Sequences and Sums 
+
+
+
+7 Number Theory
+
+a) $5+_m8\rightarrow (5+8)mod13=0$. So $5+_m8=0$ when $m=13$.
+
+b) $66/7 \rightarrow$ Quotient = 9. Remainder = 3. $3/7$ Quotient = 0. Remainder = 3. So $66\equiv3(mod7)$
+
+c) $80+11=91$. $91mod12=7$. Quotient = Remainder = 7. The clock shows 7:00.
+
+\end{document}

@@ -1,0 +1,56 @@
+\documentclass[10pt]{article}
+\usepackage[usenames]{color} %used for font color
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
+\begin{document}
+3. p $\rightarrow$ q  and $\neg$q $\rightarrow$ $\neg$p
+\begin{displaymath}
+\begin{array}{|c c|c|c|c|c|}
+p & q & p \rightarrow q & \neg q & \neg p & \neg q \rightarrow \neg p\\
+\hline
+T & T & T & F & F & T\\
+T & F & F & T & F & F\\
+F & T & T & F & T & T\\
+F & F & T & T & T & T\\
+\end{array}
+\end{displaymath}
+
+As we can see, for all 4 cases these two expressions have the same results. 
+
+Therefore, they are equivalent.
+
+4. p $\rightarrow$ q  and $\neg$p $\lor$ q
+\begin{displaymath}
+\begin{array}{|c c|c|c|c|}
+p & q & p \rightarrow q & \neg p & \neg p \lor q\\
+\hline
+T & T & T & F & T\\
+T & F & F & F & F\\
+F & T & T & T & T\\
+F & F & T & T & T\\
+\end{array}
+\end{displaymath}
+
+As we can see, for all 4 cases these two expressions have the same results. 
+
+Therefore, they are equivalent.
+
+5. $\neg$ (p $\land$ q) and $\neg$p $\lor$ $\neg$q
+\begin{displaymath}
+\begin{array}{|c c|c|c|c|c|c|}
+p & q & \neg p & \neg q & p \land q & \neg (p \land q) & \neg p \lor \neg q\\
+\hline
+T & T & F & F & T & F & F\\
+T & F & F & T & F & T & T\\
+F & T & T & F & F & T & T\\
+F & F & T & T & F & T & T\\
+\end{array}
+\end{displaymath}
+
+As we can see, for all 4 cases these two expressions have the same results. 
+
+Therefore, they are equivalent.
+
+
+\end{document}

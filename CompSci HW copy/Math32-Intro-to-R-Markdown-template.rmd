@@ -1,0 +1,278 @@
+---
+title: "Introduction to R Markdown"
+author: "Veronika Nechaeva"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: html_document
+---
+
+This assignment will introduce you to the `R Markdown` coding language.  Moreover, this `R Markdown` file (note the *.rmd extension) is a setting called "literate programming" where a user can alternate between regular typing---enhanced with markdown---and computer code (`R` or `Python`).  For reference, here is RStudio's own [cheat sheet for R Markdown](https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+
+---
+
+Type your full name in the `author` field above. State your major (including emphasis if applicable) and list your classes---course number, course name, and discussion section number---below as an ***ordered-list***, from the one you think will be the most difficult to the least difficult.
+
+Major: Computer Science
+
+1. MATH - 32 , Discussion 22D , Probability and Statistics
+2. CSE - 15 , Lab - 08, Discrete Mathematics
+3. CSE - 24, Advanced Programming
+4. SPARK - 01, SPARK - Our Energy Future
+
+
+---
+
+Spend about 5 to 10 minutes typing out your answer to "What are you hoping to learn and gain from Math 32?" as a ***bullet-point list***.  Do not worry about grammar.
+
+* Learn how to use RStudios
+* Learn more probability concepts 
+* Learn to use RStudios to solve probability exercises
+
+---
+
+Spend about 5 minutes typing out your answer to "What are your fears and obstacles?" into the code block.  Set the parameters `echo = FALSE` so that you do not show this part to your teachers and `eval = FALSE` so that RStudio does not treat the following as R code.
+
+```{r, echo = FALSE, eval = FALSE}
+I am afraid of not finding my passion in life .
+
+```
+
+---
+
+Please take a look at the quizzes that have been closed by Monday, February 15, 2021. Are there any questions you'd like us to go over? Please select up to 3 questions, place the quiz name (e.g., Video Quiz 2) between asterisks to *italicize* the quiz name and place the question number between two-pairs of asterisks so that the question number appears in **boldface**. 
+If there is no question you'd like us to go over, please suggest a song to us.  Place the song title between asterisks to *italicize* the song title and place the artist between two-pairs of asterisks so that the artist name appears in **boldface**.  (Beyond profanity, please avoid offensive content.)
+
+*Video Quiz 3* **Problems 5 and 9**
+*Video Quiz 2* **Problem 6**
+
+
+
+
+---
+
+The tasks below are about the binomial distribution.  
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# be sure to run lines of code like this to load code libraries before running subsequent code
+library("ggplot2")
+```
+
+---
+
+# Commenting
+
+Inside the code blocks, the typed information after the pound key (#) are called *comments*.  Programmers use comments to remind themselves and teammates what each section of code does.
+
+Run the following chunk of code, try to start to understand how the numbers, variables, and syntax go together. Write (at least) 5 comments inside the code block to demonstrate your understanding.
+
+```{r}
+# this is an example of a comment
+n <- 10 # n is 10
+k <- 5 # k is 5
+p <- 0.32 # probability is 0.32
+
+kvals <- 0:n
+tf <- kvals == k
+probabilities <- dbinom(kvals, n, p) # this is a binomial probability function 
+df <- data.frame(kvals, tf, probabilities) # frame function
+
+custom_subtitle <- paste0("n = ", n, ", ",
+                          "k = ", k, ", ",
+                          "p =  ", p, "; ",
+                          "P(k = ", k,
+                          ") = ", round(dbinom(k,n,p), 4))
+
+ggplot(df, aes(x = kvals, y = probabilities, fill = tf)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Binomial Distribution",
+       subtitle = custom_subtitle,
+       caption = "Math 32",
+       x = "k values",
+       y = "probability")
+```
+
+---
+
+# Sample Size
+
+Keep the parameters $k = 5$ and $p = 0.32$, but build a couple of graphs for at least 2 different values of $n$, ($0 < k < n$), then write a sentence or two about what you observe with the graphs.
+
+```{r}
+# this is an example of a comment
+n <- 7 # changed n
+k <- 5
+p <- 0.32
+
+kvals <- 0:n
+tf <- kvals == k
+probabilities <- dbinom(kvals, n, p)
+df <- data.frame(kvals, tf, probabilities)
+
+custom_subtitle <- paste0("n = ", n, ", ",
+                          "k = ", k, ", ",
+                          "p =  ", p, "; ",
+                          "P(k = ", k,
+                          ") = ", round(dbinom(k,n,p), 4))
+
+ggplot(df, aes(x = kvals, y = probabilities, fill = tf)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Binomial Distribution",
+       subtitle = custom_subtitle,
+       caption = "Math 32",
+       x = "k values",
+       y = "probability")
+```
+
+```{r}
+# this is an example of a comment
+n <- 13 # changed n
+k <- 5
+p <- 0.32
+
+kvals <- 0:n
+tf <- kvals == k
+probabilities <- dbinom(kvals, n, p)
+df <- data.frame(kvals, tf, probabilities)
+
+custom_subtitle <- paste0("n = ", n, ", ",
+                          "k = ", k, ", ",
+                          "p =  ", p, "; ",
+                          "P(k = ", k,
+                          ") = ", round(dbinom(k,n,p), 4))
+
+ggplot(df, aes(x = kvals, y = probabilities, fill = tf)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Binomial Distribution",
+       subtitle = custom_subtitle,
+       caption = "Math 32",
+       x = "k values",
+       y = "probability")
+```
+
+Changing the value of n changes the variability. The bigger the n, the wider the graph is spread.
+
+---
+
+# Items Observed
+
+Keep the parameters $n = 10$ and $p = 0.32$, but build a couple of graphs for at least 2 different values of $k$, ($0 < k < n$), then write a sentence or two about what you observe with the graphs.
+
+```{r}
+# this is an example of a comment
+n <- 10 # this is another comment
+k <- 1
+p <- 0.32
+
+kvals <- 0:n
+tf <- kvals == k
+probabilities <- dbinom(kvals, n, p)
+df <- data.frame(kvals, tf, probabilities)
+
+custom_subtitle <- paste0("n = ", n, ", ",
+                          "k = ", k, ", ",
+                          "p =  ", p, "; ",
+                          "P(k = ", k,
+                          ") = ", round(dbinom(k,n,p), 4))
+
+ggplot(df, aes(x = kvals, y = probabilities, fill = tf)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Binomial Distribution",
+       subtitle = custom_subtitle,
+       caption = "Math 32",
+       x = "k values",
+       y = "probability")
+```
+
+
+```{r}
+# this is an example of a comment
+n <- 10 # this is another comment
+k <- 7
+p <- 0.32
+
+kvals <- 0:n
+tf <- kvals == k
+probabilities <- dbinom(kvals, n, p)
+df <- data.frame(kvals, tf, probabilities)
+
+custom_subtitle <- paste0("n = ", n, ", ",
+                          "k = ", k, ", ",
+                          "p =  ", p, "; ",
+                          "P(k = ", k,
+                          ") = ", round(dbinom(k,n,p), 4))
+
+ggplot(df, aes(x = kvals, y = probabilities, fill = tf)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Binomial Distribution",
+       subtitle = custom_subtitle,
+       caption = "Math 32",
+       x = "k values",
+       y = "probability")
+```
+
+The graphs are the same,however we are looking at different cases within the graphs. First case - P(k = 1), second - P(k = 7).
+
+---
+
+# Prior Probability
+
+Keep the parameters $n = 10$ and $k = 5$, but build a couple of graphs for at least 2 different values of $p$, ($0 < p < 1$), then write a sentence or two about what you observe with the graphs.
+
+```{r}
+# this is an example of a comment
+n <- 10 # this is another comment
+k <- 5
+p <- 0.16
+
+kvals <- 0:n
+tf <- kvals == k
+probabilities <- dbinom(kvals, n, p)
+df <- data.frame(kvals, tf, probabilities)
+
+custom_subtitle <- paste0("n = ", n, ", ",
+                          "k = ", k, ", ",
+                          "p =  ", p, "; ",
+                          "P(k = ", k,
+                          ") = ", round(dbinom(k,n,p), 4))
+
+ggplot(df, aes(x = kvals, y = probabilities, fill = tf)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Binomial Distribution",
+       subtitle = custom_subtitle,
+       caption = "Math 32",
+       x = "k values",
+       y = "probability")
+```
+
+
+```{r}
+# this is an example of a comment
+n <- 10 # this is another comment
+k <- 5
+p <- 0.81
+
+kvals <- 0:n
+tf <- kvals == k
+probabilities <- dbinom(kvals, n, p)
+df <- data.frame(kvals, tf, probabilities)
+
+custom_subtitle <- paste0("n = ", n, ", ",
+                          "k = ", k, ", ",
+                          "p =  ", p, "; ",
+                          "P(k = ", k,
+                          ") = ", round(dbinom(k,n,p), 4))
+
+ggplot(df, aes(x = kvals, y = probabilities, fill = tf)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Binomial Distribution",
+       subtitle = custom_subtitle,
+       caption = "Math 32",
+       x = "k values",
+       y = "probability")
+```
+
+Changing p changes the shape of the graph. If p is bigger than 0.5, the graph is skewed left. If the p is smaller than 0.5, the graph is skewed right. When the p is around 0.5, the graph seems to be evenly spread.
+
+---
+
+
+Save your work in the "Math32-Exploration-your name.rmd" convention, `knit` the code, and then upload the HTML file to CatCourses.

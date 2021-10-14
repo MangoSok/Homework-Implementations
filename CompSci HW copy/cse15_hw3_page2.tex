@@ -1,0 +1,63 @@
+\documentclass[10pt]{article}
+\usepackage[usenames]{color} %used for font color
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
+\begin{document}
+Veronika Nechaeva | CSE015 Homework 3 | Basic Counting Principles
+ \\[\baselineskip]
+1. To solve this problem, I will use the permutations formula. 
+$P(n,r)=n!/(n-r)!$ We want to see how many arrangements of the 
+English alphabet there are. English alphabet contains 26 letters.
+To see how many different ways there are for 26 letters to be arranged, 
+we can plug 26 for n and r. So, $P(26,26)=26!/(26-26)!$.
+This evaluates to $P(26,26)=26!$, which makes sense, because there are 
+26 spots. For the first spot, there are 26 different possible letters
+that can fill it. For the second spot, there is now 25, because one
+of the 26 letters already took the first spot. For the third spot 
+there is 24 letters to choose from, for the fourth - 23. And so on.
+This can be written as 26! arrangements. \\[\baselineskip]
+
+2. There are 18 math majors and 325 computer science majors. When picking two representatives 
+where one of them has math major, and the other one has a computer science major, there is 2 possible
+outcomes: 1st representative-math major, second-computer science major, 
+and vice versa. There are 18 ways for 1 representative to get picked from 
+the math major group and there are 325 ways for 1 representative to get picked 
+from the computer science major group. From this we get that the number of ways for 
+two representatives can be picked so that one is a mathematics major and the other is a 
+computer science major equals 2*18*325 = 11,700 \\[\baselineskip]
+
+3. There are 12 colors of the shirt, 2 models of the shirt (for males and 
+
+females), and 3 sizes for each model of the shirt. So there are 
+
+12*3 shirt types for women (12 colors and 3 sizes), and 12*3 shirt types
+
+for men. In total there are 12*3*2=72 different shirt types. \\[\baselineskip]
+
+4. There are 10 questions and 4 answer choices for each. The number 
+
+of ways a student can answer this quiz is equal to 4*4*4...(10 times).
+
+So, it equals to $4^{10}=1,048,576$. \\[\baselineskip]
+
+5. We know how many ways a student can answer a quiz of 10 questions if
+
+we assume he answers them all from number 4. It is $4^{10}$. Now we need to
+
+calculate all the possible ways for the student to answer a test with 1 
+
+question left blank, then 2 questions left blank, then 3 and 4, all the way
+
+to 10 questions left blank, and sum all results. When 1 question is left 
+
+blank, we can treat the quiz like it has 9 questions. So, there are $4^9$ ways
+
+to answer the quiz with 1 blank answer. Same logic applies for the rest of 
+
+the scenarios. 
+
+In total, there are $4^{10}+4^9+4^8+4^7+4^6+4^5+4^4+4^3+4^2+4^1+4^0=$
+
+1,398,101 ways to answer a 10 question quiz if you can leave answers blank. 
+\end{document}

@@ -1,0 +1,213 @@
+---
+title: "Worksheet 6"
+author: "Veronika Nechaeva"
+date: "3/4/2021"
+output: html_document
+---
+
+
+Goal: To illustrate how to use R to simulate a coin flip game
+
+Two Players: Byron and Paul. We pay attention to only Byron's earnings
+      
+Each round the fair coin is tossed.
+
+  * Head: Byron wins $1 from Paul.
+  * Tails: Byron gives $1 to Paul.
+
+We want to simulate many games and track:
+        
+  * Number of Heads during a game.
+  * Byron's total at the end of the game.
+  * Byron's maximum fortune during a game.
+
+
+### Initialization ##
+
+```{r}
+totalGamesPlayed <- 10000; 
+
+gameLength <- 30;
+win <- 1;
+loss <- -1;
+
+#Placeholders to Store Results
+numTossesWon <- 0*c(1:totalGamesPlayed);
+totalWinnings <- 0*c(1:totalGamesPlayed);
+maxFortune <- 0*c(1:totalGamesPlayed);
+```
+
+### Carry out Experiment
+
+```{r}
+for (j in seq(from=1,to=totalGamesPlayed,by=1))
+{
+  #Play the Game
+  gameOutcomes <- sample(c(loss,win), size=gameLength, replace=TRUE)
+  
+  ## NEED TO CHANGE numTossesWon, totalwinnings, and maxFortune
+  
+  ## (1) Number of Tosses Byron Won (i.e., how many heads) ##
+  numTossesWon[j] <- sum(gameOutcomes==1); 
+  
+  ## (2) What is Byron's Final Total ##
+  totalWinnings[j] <- sum(gameOutcomes); 
+  
+  ## (3) What is Byron's Maximum Fortune ##
+  maxFortune[j] <- max(cumsum(gameOutcomes));  
+}
+
+```
+
+
+### 1. Byron's Number Wins (Heads)
+
+```{r}
+minTossesWon <- 0; 
+maxTossesWon <- gameLength*(1);
+
+xTossesWon <- c(minTossesWon:maxTossesWon);  
+pTossesWon <- 0*c(minTossesWon:maxTossesWon); # PMF of tosses won
+cTossesWon <- 0*c(minTossesWon:maxTossesWon); # CDF of tosses won
+pTossesWon_2 <- 0*c(minTossesWon:maxTossesWon);
+
+for (j in seq(from=1,to=length(xTossesWon),by=1))
+{
+  pTossesWon[j] <- sum(numTossesWon==xTossesWon[j])/totalGamesPlayed;
+}
+
+for (j in seq(from=1,to=31,by=1))
+{
+  num <- j-1
+  pTossesWon_2[j] <- (factorial(30)/(factorial(num)*factorial(30-num)))*(1/2)^(num) *(1/2)^(30-num);
+}
+
+cTossesWon <- cumsum(pTossesWon);
+
+```
+
+### 2. Byron's Total Winnings
+```{r}
+
+minTotalWinning <- min(totalWinnings); 
+maxTotalWinning <- max(totalWinnings); 
+
+xTotalWin <- c(minTotalWinning:maxTotalWinning);
+pTotalWin <- 0*c(minTotalWinning:maxTotalWinning);
+cTotalWin <- 0*c(minTotalWinning:maxTotalWinning);
+
+for (j in seq(from=1,to=length(xTotalWin),by=1))
+{
+  pTotalWin[j] <- sum(totalWinnings==xTotalWin[j])/totalGamesPlayed;
+}
+cTotalWin <- cumsum(pTotalWin);
+```
+
+### 3. Byron's Maximum Fortune 
+```{r}
+minFortuneVal <- min(maxFortune); 
+maxFortuneVal <- max(maxFortune); 
+
+xFortune <- c(minFortuneVal:maxFortuneVal);
+pFortune <- 0*c(minFortuneVal:maxFortuneVal);
+cFortune <- 0*c(minFortuneVal:maxFortuneVal);
+
+for (j in seq(from=1,to=length(xFortune),by=1))
+{
+  pFortune[j] <- sum(maxFortune==xFortune[j])/totalGamesPlayed;
+}
+
+cFortune <- cumsum(pFortune); 
+```
+
+
+### Visualizations 
+```{r}
+# (1) Wins 
+# PMFs
+plotTitle <- paste("Empirical PMF of \ # Wins (Heads) in ", gameLength, " Flips\n","\ # Trials = ", totalGamesPlayed, sep = "");
+plot(xTossesWon,pTossesWon,xlab="Number of Wins (Heads)", ylab="Empirical Probability",type='b',main=plotTitle)
+lines(xTossesWon,pTossesWon_2, col = "green")
+points(xTossesWon,pTossesWon_2, col = "green")
+```
+
+ **Problem 1. **
+ 
+**A. It seems like the graph is symmetric. **
+
+**B. It is a binomial distribution, which follows the following mass function : P(X=k) = (30_C_k)*(1/2)^(k)*(1-1/2)^(30-k)**
+
+**C. As we can see, the two graphs lie almost on top of each other. That means that the simulation is accurate enough.**
+
+```{r}
+## (2) Total Winnings
+plotTitle <- paste("Empirical PMF of Total Winnings in  ", gameLength, " Flips\n","\ # Trials = ", totalGamesPlayed, sep = "");
+plot(xTotalWin,pTotalWin,xlab="Total Winnings", ylab="Empirical Probability",type='b',main=plotTitle)
+```
+
+**Problem 2. A. Probability that Byron will break even is 0.14. **
+
+**B.The probability that Byron will have $1 at the end of 30 tosses is 0.**
+
+**C. Not all values are possible. Only even values between 30 and -30 are possible since the number of tosses is even(30)**
+**, so an odd outcome of dollars won or lost isnt possible.**
+
+
+```{r}
+## (3) Maximum Fortune
+plotTitle <- paste("Empirical PMF of Maximum Fortune in  ", gameLength, " Flips\n","\ # Trials = ", totalGamesPlayed, sep = "");
+plot(xFortune,pFortune,xlab="Total Winnings", ylab="Empirical Probability",type='b',main=plotTitle)
+```
+
+**Problem 3. A.The graph is skewed right.**
+
+**B. $2 is Byron’s average best fortune during a 30-toss game**
+
+
+### CDFs
+```{r}
+# (1) Wins
+plotTitle <- paste("Empirical CDF of \ # Wins (Heads) in ", gameLength, " Flips\n","\ # Trials = ", totalGamesPlayed, sep = "");
+plot(xTossesWon,cTossesWon,xlab="Number of Wins (Heads)", ylab="Empirical Probability",type='b',main=plotTitle)
+
+# (2) Total Winnings
+plotTitle <- paste("Empirical CDF of Total Winnings in  ", gameLength, " Flips\n","\ # Trials = ", totalGamesPlayed, sep = "");
+plot(xTotalWin,cTotalWin,xlab="Total Winnings", ylab="Empirical Probability",type='b',main=plotTitle)
+
+# (3) Maximum Fortune
+plotTitle <- paste("Empirical CDF of Maximum Fortune in  ", gameLength, " Flips\n","\ # Trials = ", totalGamesPlayed, sep = "");
+plot(xFortune,cFortune,xlab="Total Winnings", ylab="Empirical Probability",type='b',main=plotTitle)
+```
+
+
+## **Problem 4**
+
+```{r}
+# random loss or win array
+randArr <- 0*c(minTossesWon:maxTossesWon);
+#cummulatuve array (holds current $ value)
+cumArr <- 0*c(minTossesWon:maxTossesWon);
+numFlips <- 0*c(minTossesWon:maxTossesWon);
+possValues <- 0*c(2)
+possValues[1] <- -1
+possValues[2] <- 1
+for (j in seq(from=1,to=31,by=1))
+{
+  i <- sample(1:2, 1)
+  randArr[j] <- possValues[i];
+}
+cumArr[1]<-randArr[1]
+for (j in seq(from=2,to=31,by=1))
+{
+  cumArr[j] <- cumArr[j-1] + randArr[j];
+}
+for (j in seq(from=1,to=31,by=1))
+{
+  numFlips[j] <- (j-1)
+}
+
+plotTitle <- paste("Cummulative Winnings in Dollars ", gameLength, " Flips\n");
+plot(numFlips,cumArr,xlab="Number of Flips", ylab="Total Earnings",type='b',main=plotTitle)
+```
+
+**I have run this graph multiple times and it looks like Byron will be in lead (have more than $0 earnings) 50% of the time on average. This probability makes sense because the chances of him being in the lead vs him not being in the lead ( P(X>0) vs P(X<=0)) are almost 50/50 ( P(X<=0) is a bit higher than P(X>0) because of the "=").**
