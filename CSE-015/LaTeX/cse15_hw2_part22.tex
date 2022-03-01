@@ -1,0 +1,54 @@
+\documentclass[10pt]{article}
+\usepackage[usenames]{color} %used for font color
+\usepackage{amssymb} %maths
+\usepackage{amsmath} %maths
+\usepackage[utf8]{inputenc} %useful to type directly diacritic characters
+\begin{document}
+Nested Quantifiers
+\\[\baselineskip] 
+
+1. $\exists$x $\forall$y A(x,y)   
+Value: True 
+
+Reasoning: when x = 0, x times any y will equal 0.
+
+2. $\exists$x $\exists$y B(x,y)   
+Value: True 
+
+Reasoning: there is multiple values for x and y that 
+
+result in x+y = 0. For example, x = -1 and y = 1.
+
+3. $\forall$x $\exists$y A(x,y)    
+Value: True
+
+Reasoning: when y = 0, y times any x will equal 0.
+
+4. $\exists$x $\forall$y (A(x,y) $\land$ B(x,y))
+Value: False
+
+Reasoning: only 1 x value makes x*y=0 always true, x = 0.
+
+And if you plug in x = 0 to B(x,y) , you can see that 
+
+there is only 1 y value that will result in x + y = 0,
+
+that is y = 0. But for the rest on the y values, 
+
+the result will not be 0. Therefore, there does not exist 
+
+a value x for all y that would satisfy both A(x,y) and B(x,y).
+
+5. $\exists$x $\exists$y (A(x,y) $\land$ $\neg$ B(x,y))
+Value: True
+
+Reasoning: For example, take x = 0 and y = 5. If you plug them
+
+in A(x,y), you get 0*5 = 0. However, if you plug them in B(x,y),
+
+you get 0 + 5 = 0, which is not true. So there exists at least one 
+
+value for x and for y that results in A(x,y) being true and 
+
+$\neg$ B(x,y) being false.
+\end{document}

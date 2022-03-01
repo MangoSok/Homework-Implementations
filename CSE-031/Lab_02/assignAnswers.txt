@@ -1,0 +1,24 @@
+            Individual Assignment 1
+
+1.  Line 18 caused segmentation fault. 
+2.  You add a "&" simbol before the input.
+3. Sum is being assigned to zero initially 
+   and since it is not being passed by reference 
+   to the read_values function, its value never changes.
+4. Pass sum by reference(or pointer)
+
+
+            Individual Assignment 2
+        
+1. The output is expected. The first string gets appended 
+   to the second string resulting in "HELLO!hello!".
+2. The output is NOT expected. It was supposed to be "HI!hi!"
+    but instead it is "HI!hi!hello!". The problem is in the way new
+    user input is being read and in the way append functions
+    appends the two strings. After you put first set of strings in,
+    str2 is just being added to the empty slots of str1. However,
+    str1 doesnt get emptied. So part of that first input stays in str1 
+    when the next input is being taken, which messes up the second print.
+3. The output is UNexpected. It prints " thank you!I am fine, thank you!�o�"
+    because the strings are initialized to only 10 character length.
+    However, each of the strings inputed is longer than 10 characters.

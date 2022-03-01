@@ -1,0 +1,15 @@
+notebook
+school
+homework
+student
+professor
+tiger
+fish
+dog
+raccoon
+fly
+chair
+table
+commuter
+keyboard
+lamp

@@ -1,0 +1,5 @@
+A. Market Basket in 2010:  100*2 + 50*1.5 + 25*1 = 300
+     Market Basket in 2015:  100*2.5 + 50*2.2 + 25*1.2 = 390
+B. CPI in 2010: 300/300 * 100 = 100 (because 2010 is the base year)
+     CPI in 2015: 390/300 * 100 = 130
+C. The nominal income should increase by 30% because CPI increased by 30% from 2010 to 2015.

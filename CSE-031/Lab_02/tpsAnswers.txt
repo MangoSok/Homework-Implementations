@@ -1,0 +1,46 @@
+			TPS 1
+1. Partners' names : Affan Nauman, Zhong Cai, Celeste Rodriguez
+
+2. 	https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiR-onR9-P1AhW3I0QIHWUkDUsQFnoECAgQAQ&url=https%3A%2F%2Fstackoverflow.com%2Fquestions%2F9707883%2Fgdb-vs-lldb-debuggers&usg=AOvVaw3PZKm3Rz4RbfZ2VgozOCaZ
+
+https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj86pvf9-P1AhUZH0QIHQK1BJAQFnoECAkQAQ&url=https%3A%2F%2Flldb.llvm.org%2F&usg=AOvVaw1J2wcRpwZ7b2CCmFfYbLTO
+
+https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj86pvf9-P1AhUZH0QIHQK1BJAQjBB6BAgUEAE&url=https%3A%2F%2Flldb.llvm.org%2Fuse%2Ftutorial.html&usg=AOvVaw08MeeztWlKOeOnuWrxZngu
+
+3. Done
+4. Done
+			TPS 2
+
+1. Gcc punishment.c -g -o punish
+2. Gdb punish
+3. Run or r punish
+4. Break points is where you want to stop to look at the current state of variables. 
+   Break main or break punishment.c:28 (line number)
+5. S(skip) or n(next) (they are different)
+6. Print variable_name
+7. Type continue and enter until the program went through all the breakpoints
+8. Quit or q
+
+			TPS 3
+
+1. 4 variables were declared in the first line of 
+   main program. 2 of them are pointers ( *px, *py).
+
+2. I expected x,y, and the array to be filled with random junk numbers, 
+   but instead x was 0, y was 1, first 8 values of the integer array were 0s, 
+   and last two were big junk numbers. When I repeatedly run the program, 
+   only the 9th value in the array changes.
+
+3. You assign them values.
+
+4. printf("Adress of x is: %p Value of x is: %d", (void*)&x, x);
+   printf("\nAdress of y is: %p Value of y is: %d", (void*)&y, y);
+
+5. px = &x;
+   py = &y;
+
+6. *arr give value arr points to and arr = arr + 1 moves arr pointer to the next value in arr
+7. mv function can rename an executable file ("mv main cselab1")
+8. It creates an a.out executable file
+9. ./nameOfTheFile command
+
