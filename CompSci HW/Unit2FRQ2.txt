@@ -1,5 +1,0 @@
-A. Labor Force: 97million + 3million + 5million =  105 
-B. LFPR: 105/125 * 100 = 84%
-C. The actual real output is greater than the potential real output because the actual rate of unemployment is 1% lower than the natural rate of unemployment, meaning that the economy is beyond what is considered full employment.
-D. Natural rate of unemployment includes structural and frictional unemployment, but actual rate of unemployment includes all three types (structural, frictional, and cyclical). So cyclical rate of unemployment would equal to 5% - 4% = 1%
-E. The actual rate of unemployment will remain the same because discourage workers did not count as unemployed workers. 
